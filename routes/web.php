@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//ランダムなメッセージを表示する
+Route::get(
+    '/comments/random/',
+    [App\http\Controllers\GreetingController::class, 'random']
+);
+
+//単純なあいさつ
+Route::get(
+    '/comments/{id}/',
+    [App\http\Controllers\GreetingController::class, 'greeting']
+);
+
+//URLによってメッセージが変わる
+Route::get(
+    '/comments/freeword/{id}/',
+    [App\http\Controllers\GreetingController::class, 'message']
+);
